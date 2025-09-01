@@ -9,3 +9,4 @@
 /Users/peter/Projects/FileUploadApi/FileUploadApi.Domain/obj/Debug/net8.0/refint/FileUploadApi.Domain.dll
 /Users/peter/Projects/FileUploadApi/FileUploadApi.Domain/obj/Debug/net8.0/FileUploadApi.Domain.pdb
 /Users/peter/Projects/FileUploadApi/FileUploadApi.Domain/obj/Debug/net8.0/ref/FileUploadApi.Domain.dll
+/Users/peter/Projects/FileUploadApi/FileUploadApi.Domain/obj/Debug/net8.0/FileUploadApi.Domain.sourcelink.json

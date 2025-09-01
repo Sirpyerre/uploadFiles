@@ -13,3 +13,4 @@
 /Users/peter/Projects/FileUploadApi/FileUploadApi.Application/obj/Debug/net8.0/refint/FileUploadApi.Application.dll
 /Users/peter/Projects/FileUploadApi/FileUploadApi.Application/obj/Debug/net8.0/FileUploadApi.Application.pdb
 /Users/peter/Projects/FileUploadApi/FileUploadApi.Application/obj/Debug/net8.0/ref/FileUploadApi.Application.dll
+/Users/peter/Projects/FileUploadApi/FileUploadApi.Application/obj/Debug/net8.0/FileUploadApi.Application.sourcelink.json

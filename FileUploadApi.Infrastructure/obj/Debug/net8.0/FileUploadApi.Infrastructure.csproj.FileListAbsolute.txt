@@ -17,3 +17,4 @@
 /Users/peter/Projects/FileUploadApi/FileUploadApi.Infrastructure/obj/Debug/net8.0/FileUploadApi.Infrastructure.pdb
 /Users/peter/Projects/FileUploadApi/FileUploadApi.Infrastructure/obj/Debug/net8.0/FileUploadApi.Infrastructure.genruntimeconfig.cache
 /Users/peter/Projects/FileUploadApi/FileUploadApi.Infrastructure/obj/Debug/net8.0/ref/FileUploadApi.Infrastructure.dll
+/Users/peter/Projects/FileUploadApi/FileUploadApi.Infrastructure/obj/Debug/net8.0/FileUploadApi.Infrastructure.sourcelink.json
