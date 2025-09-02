@@ -17,6 +17,7 @@ services:
 
   localstack:
     image: localstack/localstack:latest
+    platform: linux/arm64
     container_name: localstack
     ports:
       - "4566:4566"
@@ -27,8 +28,6 @@ services:
       - DATA_DIR=/tmp/localstack/data
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
-    volumes:
-      - "./.localstack:/tmp/localstack"
     networks:
       - dev-network
 

@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ZJrZwxWUtDI=",
+  "dgSpecHash": "POBsZvUt2SQ=",
   "success": true,
   "projectFilePath": "/Users/peter/Projects/FileUploadApi/FileUploadApi.API/FileUploadApi.API.csproj",
   "expectedPackageFiles": [
-    "/Users/peter/.nuget/packages/awssdk.core/4.0.0.23/awssdk.core.4.0.0.23.nupkg.sha512",
-    "/Users/peter/.nuget/packages/awssdk.s3/4.0.6.6/awssdk.s3.4.0.6.6.nupkg.sha512",
+    "/Users/peter/.nuget/packages/awssdk.core/4.0.0.26/awssdk.core.4.0.0.26.nupkg.sha512",
+    "/Users/peter/.nuget/packages/awssdk.s3/4.0.6.12/awssdk.s3.4.0.6.12.nupkg.sha512",
     "/Users/peter/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/peter/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
     "/Users/peter/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",

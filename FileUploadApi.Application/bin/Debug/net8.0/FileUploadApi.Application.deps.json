@@ -8,12 +8,32 @@
     ".NETCoreApp,Version=v8.0": {
       "FileUploadApi.Application/1.0.0": {
         "dependencies": {
+          "AWSSDK.S3": "4.0.6.12",
           "FileUploadApi.Domain": "1.0.0",
           "MediatR": "13.0.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0"
         },
         "runtime": {
           "FileUploadApi.Application.dll": {}
+        }
+      },
+      "AWSSDK.Core/4.0.0.26": {
+        "runtime": {
+          "lib/net8.0/AWSSDK.Core.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.26"
+          }
+        }
+      },
+      "AWSSDK.S3/4.0.6.12": {
+        "dependencies": {
+          "AWSSDK.Core": "4.0.0.26"
+        },
+        "runtime": {
+          "lib/net8.0/AWSSDK.S3.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.6.12"
+          }
         }
       },
       "MediatR/13.0.0": {
@@ -166,6 +186,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AWSSDK.Core/4.0.0.26": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sP+yvQm/caU3MNAmk/AeI9t/SN2AGoXw84UK7KgjHvjyRxEzgb2bEpiClNGfNqtfI+9pGBSG2OwMOvapajoBxQ==",
+      "path": "awssdk.core/4.0.0.26",
+      "hashPath": "awssdk.core.4.0.0.26.nupkg.sha512"
+    },
+    "AWSSDK.S3/4.0.6.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cMJDtLs625WaHALtOZhIcEzMkbnu+6V0ZnPamk00p24YcGtPdbtdW0wEMzRe3wpC4Kds/cY0aZOMa5DMQf5piQ==",
+      "path": "awssdk.s3/4.0.6.12",
+      "hashPath": "awssdk.s3.4.0.6.12.nupkg.sha512"
     },
     "MediatR/13.0.0": {
       "type": "package",

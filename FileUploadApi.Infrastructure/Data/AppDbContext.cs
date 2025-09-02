@@ -25,7 +25,7 @@ namespace FileUploadApi.Infrastructure.Data
             modelBuilder.Entity<UserDocument>()
                 .HasOne(d => d.User)
                 .WithMany(u => u.Documents)
-                .HasForeignKey(d => d.User);
+                .HasForeignKey(d => d.UserId);
         }
     }
 }
