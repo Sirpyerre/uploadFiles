@@ -37,12 +37,12 @@ namespace FileUploadApi.API.Controllers
             var fileName = $"{Guid.NewGuid()}_{file.FileName}";
             await using var stream = file.OpenReadStream();
             
-            var fileUrl = await _storageService.UploadFileAsync(stream, file.FileName, file.ContentType, _bucketName);
+            var fileUrl = await _storageService.UploadPhotoAsync(stream, file.FileName, file.ContentType);
 
             var userPhoto = new UserPhoto
             {
                 Id = Guid.NewGuid(),
-                FileName = file.FileName,
+                FileName = fileName,
                 FileUrl = fileUrl,
                 ContentType = file.ContentType,
                 FileSize = file.Length,
