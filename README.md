@@ -107,9 +107,6 @@ Configuration is stored in `appsettings.json`:
 }
 ```
 
-> Buckets are created automatically in LocalStack for local development.
-
-
 ## Development Notes
 
 * Uses **Clean Architecture** principles:
