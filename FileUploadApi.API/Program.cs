@@ -1,7 +1,9 @@
 using Amazon.S3;
 using FileUploadApi.Domain.Options;
 using FileUploadApi.Application.Services;
+using FileUploadApi.Domain.Repositories;
 using FileUploadApi.Infrastructure.Data;
+using FileUploadApi.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -36,6 +38,10 @@ builder.Services.AddSingleton<IAmazonS3>(sp =>
 });
 
 builder.Services.AddScoped<IStorageService, S3StorageService>();
+
+
+builder.Services.AddScoped<IUserPhotoRepository, UserPhotoRepository>();
+builder.Services.AddScoped<IUserPhotoService, UserPhotoService>();
 
 
 var app = builder.Build();
