@@ -4,5 +4,6 @@ namespace FileUploadApi.Application.Services
     {
         Task<string> UploadPhotoAsync(Stream fileStream, string fileName, string contentType);
         Task<string> UploadDocumentAsync(Stream fileStream, string fileName, string contentType);
+        Task<bool> DeletePhotoAsync(string fileName);
     }
 }

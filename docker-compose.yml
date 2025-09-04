@@ -25,11 +25,13 @@ services:
     environment:
       - SERVICES=s3
       - DEBUG=1
-      - DATA_DIR=/tmp/localstack/data
+      - LS_DATA_DIR=/var/lib/localstack/data
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
     networks:
       - dev-network
+    volumes:
+      - "./localstack-data:/var/lib/localstack/data"
 
 volumes:
   sqlserver_data:
