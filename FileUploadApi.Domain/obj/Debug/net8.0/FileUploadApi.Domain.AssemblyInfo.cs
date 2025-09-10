@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FileUploadApi.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da4f36ad78e70846b156198ad74ec7823adb5fc8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f99096816fec9b15ccb133d453cd2557f6dcbfcc")]
 [assembly: System.Reflection.AssemblyProductAttribute("FileUploadApi.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FileUploadApi.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

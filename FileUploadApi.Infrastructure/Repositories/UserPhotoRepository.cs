@@ -34,6 +34,18 @@ namespace FileUploadApi.Infrastructure.Repositories
         {
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<bool> DeleteAsync(Guid id)
+        {
+           var photo = await _dbContext.Set<UserPhoto>().FirstOrDefaultAsync(up => up.UserId == id);
+           if (photo != null)
+           {
+               _dbContext.Set<UserPhoto>().Remove(photo);
+               await _dbContext.SaveChangesAsync();
+               return true;
+           }
+           return false;
+        }
     }
 }
 

@@ -61,7 +61,20 @@ docker compose up -d
 dotnet ef database update --project FileUploadApi.Infrastructure --startup-project FileUploadApi.API
 ```
 
-### 4. Run the API
+### 4. Add a bucket to LocalStack 
+
+Using AWS CLI and LocalStack, run the following command in your terminal:
+
+```bash
+aws --endpoint-url=http://localhost:4566 s3 mb s3://user-photos
+```
+This will create a bucket named `user-photos` locally. You should see the output:
+
+```
+make_bucket: user-photos
+```
+
+### 5. Run the API
 
 ```bash
 dotnet run --project FileUploadApi.API

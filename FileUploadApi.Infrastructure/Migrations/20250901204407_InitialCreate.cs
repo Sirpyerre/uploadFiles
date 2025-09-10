@@ -85,6 +85,22 @@ namespace FileUploadApi.Infrastructure.Migrations
                 name: "IX_UserPhotos_UserId",
                 table: "UserPhotos",
                 column: "UserId");
+            
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "UserName", "Email", "PasswordHash", "FirstName", "LastName", "DateTimeCreated", "DateTimeUpdated", "IsActive" },
+                values: new object[]
+                {
+                    Guid.NewGuid(),
+                    "dummyuser",
+                    "dymmy@gmail.com",
+                    "passwordhashed123",
+                    "Dummy",
+                    "User",
+                    DateTime.Now,
+                    DateTime.Now,
+                    true
+                });
         }
 
         /// <inheritdoc />

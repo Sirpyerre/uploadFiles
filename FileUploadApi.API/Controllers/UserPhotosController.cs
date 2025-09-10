@@ -34,5 +34,22 @@ namespace FileUploadApi.API.Controllers
 
             return Ok(new { PhotoUrl = newFileUrl });
         }
+        
+        // delete a photo
+        [HttpDelete("{userId}")]
+        public async Task<IActionResult> DeletePhoto(Guid userId, [FromQuery] string filepath)
+        {
+            if (string.IsNullOrEmpty(filepath))
+            {
+                return BadRequest("No file path provided");
+            }
+            
+            var isdeleted = await _userPhotoService.DeletePhotoAsync(userId, filepath);
+            if (!isdeleted)
+                return BadRequest("Failed to delete file");
+            
+            return Ok();
+            
+        }
     }
 }

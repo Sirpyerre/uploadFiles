@@ -35,8 +35,7 @@ namespace FileUploadApi.Application.Services
             {
                 return await DeleteFileAsync(fileName, _options.BucketNamePhotos);
             }
-
-            _logger.LogWarning("File not found in S3 bucket: {fileName}", fileName);
+            
             return false;
         }
 

@@ -1,3 +1,4 @@
+using FileUploadApi.Application.helpers;
 using Microsoft.Extensions.Logging;
 using FileUploadApi.Domain.Entities;
 using FileUploadApi.Domain.Options;
@@ -28,8 +29,8 @@ namespace FileUploadApi.Application.Services
         {
             var existingPhoto = _photoRepository.GetByIdAsync(userId).Result;
 
-            var newFileName = $"{Guid.NewGuid()}_{fileName}";
-            var newFileUrl = await _storageService.UploadPhotoAsync(fileStream, fileName, contentType);
+            var filePath = FilePathHelper.GetPhotoPath(userId, fileName);
+            var newFileUrl = await _storageService.UploadPhotoAsync(fileStream, filePath, contentType);
 
             if (existingPhoto != null)
             {
@@ -38,7 +39,6 @@ namespace FileUploadApi.Application.Services
                     if (!await _storageService.DeletePhotoAsync(existingPhoto.FileName))
                     {
                         _logger.LogWarning("Failed to delete existing photo from S3. Aborting update.");
-                        return string.Empty;
                     }
                 }
                 catch (Exception e)
@@ -47,7 +47,7 @@ namespace FileUploadApi.Application.Services
                     return string.Empty;
                 }
 
-                existingPhoto.FileName = newFileName;
+                existingPhoto.FileName = filePath;
                 existingPhoto.FileUrl = newFileUrl;
                 existingPhoto.FileSize = fileSize;
                 existingPhoto.ContentType = contentType;
@@ -62,7 +62,7 @@ namespace FileUploadApi.Application.Services
                     var userPhoto = new UserPhoto
                     {
                         UserId = userId,
-                        FileName = newFileName,
+                        FileName = filePath,
                         FileUrl = newFileUrl,
                         ContentType = contentType,
                         FileSize = fileSize,
@@ -79,8 +79,44 @@ namespace FileUploadApi.Application.Services
             }
 
             await _photoRepository.SaveChangesAsync();
-            
+
             return newFileUrl;
+        }
+
+        public async Task<bool> DeletePhotoAsync(Guid userId, string fileName)
+        {
+            var existingPhoto = _photoRepository.GetByIdAsync(userId).Result;
+            if (existingPhoto != null && existingPhoto.FileName != fileName)
+            {
+                _logger.LogWarning("Photo not found for user {UserId} with file name {FileName}", userId, fileName);
+                return false;
+            }
+
+            try
+            {
+                if (!await _storageService.DeletePhotoAsync(existingPhoto.FileName))
+                {
+                    _logger.LogWarning("Failed to delete existing photo from S3. Aborting update.");
+                    return false;
+                }
+
+                // delete row from database
+                if (!await _photoRepository.DeleteAsync(userId))
+                {
+                    _logger.LogWarning("Failed to delete existing photo from database. Aborting update.");
+                    return false;
+                }
+
+                await _photoRepository.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Failed to delete existing photo from S3. Aborting update.");
+                return await Task.FromResult(false);
+            }
+
+
+            return true;
         }
     }
 }

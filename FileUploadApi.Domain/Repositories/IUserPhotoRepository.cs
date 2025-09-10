@@ -8,6 +8,7 @@ namespace FileUploadApi.Domain.Repositories
         Task AddAsync(UserPhoto photo);
         Task UpdateAsync(UserPhoto photo);
         Task SaveChangesAsync();
+        Task<bool> DeleteAsync(Guid id);
     }
 }
 
