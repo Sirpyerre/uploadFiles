@@ -6,6 +6,7 @@ using FileUploadApi.Infrastructure.Data;
 using FileUploadApi.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHealthChecks();
@@ -43,6 +44,8 @@ builder.Services.AddScoped<IStorageService, S3StorageService>();
 builder.Services.AddScoped<IUserPhotoRepository, UserPhotoRepository>();
 builder.Services.AddScoped<IUserPhotoService, UserPhotoService>();
 
+
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

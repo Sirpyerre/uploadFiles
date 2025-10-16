@@ -103,6 +103,15 @@ Content-Type: multipart/form-data
 * Uploads a photo for the given user.
 * If a photo already exists, the previous one is deleted from S3 and updated in the database.
 
+### Delete User Photo
+
+```http
+DELETE /api/userphotos/{userId}
+```
+
+* Deletes the photo for the given user.
+* If no photo exists, the request is ignored.
+
 ---
 
 ## Configuration

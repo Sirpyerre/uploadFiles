@@ -42,6 +42,9 @@ namespace FileUploadApi.Application.Services
         private async Task<string> UploadFileAsync(Stream fileStream, string fileName, string contentType,
             string bucketName)
         {
+            // Ensure bucket exists before uploading
+            await EnsureBucketExistsAsync(bucketName);
+
             var uploadRequest = new TransferUtilityUploadRequest
             {
                 InputStream = fileStream,
@@ -98,6 +101,34 @@ namespace FileUploadApi.Application.Services
                     return false;
                 }
 
+                throw;
+            }
+        }
+
+        // Ensure bucket exists, create if it doesn't
+        private async Task EnsureBucketExistsAsync(string bucketName)
+        {
+            try
+            {
+                var bucketExists = await Amazon.S3.Util.AmazonS3Util.DoesS3BucketExistV2Async(_s3Client, bucketName);
+                
+                if (!bucketExists)
+                {
+                    _logger.LogInformation("Creating S3 bucket: {BucketName}", bucketName);
+                    
+                    var putBucketRequest = new Amazon.S3.Model.PutBucketRequest
+                    {
+                        BucketName = bucketName,
+                        UseClientRegion = true
+                    };
+                    
+                    await _s3Client.PutBucketAsync(putBucketRequest);
+                    _logger.LogInformation("Successfully created S3 bucket: {BucketName}", bucketName);
+                }
+            }
+            catch (AmazonS3Exception e)
+            {
+                _logger.LogError(e, "Error ensuring bucket exists: {BucketName}", bucketName);
                 throw;
             }
         }
